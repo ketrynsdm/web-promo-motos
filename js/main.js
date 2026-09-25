@@ -411,6 +411,10 @@ function initCouponModal() {
   // Go to deal trigger
   if (modalGoBtn) {
     modalGoBtn.addEventListener('click', () => {
+      // Track lead button click event using Meta Pixel if available
+      if (typeof fbq === 'function') {
+        fbq('track', 'LeadButtonClick', {value: 0.50, currency: 'BRL'});
+      }
       // Simulate going to group/link
       showToastNotification('Redirecionando para a loja parceira com segurança...');
       setTimeout(() => {
